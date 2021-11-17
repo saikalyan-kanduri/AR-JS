@@ -14,6 +14,11 @@
                     document.querySelector('a-text').setAttribute('gps-entity-place', 
                                                                   `latitude: ${u_latitute}; longitude: ${u_longitude};`)
                 });
+
+                navigator.geolocation.getCurrentPosition((position) => {
+                    document.querySelector('a-box').setAttribute('gps-entity-place', 
+                                                                  `latitude: ${u_latitute}; longitude: ${u_longitude};`)
+                });
             }
         </script>
     </head>
@@ -29,8 +34,11 @@
                 look-at="[gps-camera]"
                 scale="5 5 5">
             </a-text>
-        
-            <a-camera gps-camera rotation-reader> </a-camera>
+            
+
+            <a-box material="color: yellow" position="0 30 0" look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1'/>
+
+            <a-camera gps-camera rotation-reader maxDistance="2" gpsMinDistance="1" look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1'> </a-camera>
 
         </a-scene>
     </body>
